@@ -3,27 +3,41 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Antonio Pierro - Processign Project</title>
+        <title>Anastasia Garau - Processign Project</title>
         <script src="vendors/processing.min.js"></script>
     </head>
     <body>
         <h1>Processing project by Antonio</h1>
         <script type="text/processing">
 
-            // Write your project here
-            
-            // Example
-            void setup() {
-              size(200, 200);
-              background(255);
-            }
-            void draw(){
-                pushMatrix();
-                translate(100, 100);
-                rotate(radians(frameCount * 2  % 360));
-                rect(0, 0, 80, 5);
-                popMatrix();
-            }
+ int ranR = (int)random (0,255); //variabile che genera numero randomico per colore sfondo RED
+int ranG = (int)random (0,255); //variabile che genera numero randomico per colore sfondo GREEN
+int ranB = (int)random (0,255); //variabile che genera numero randomico per colore sfondo BLUE
+
+
+void setup () {
+  
+  size(500,500); //ora si può mettere qualsiasi dimensione dello sketch e il cerchio sarà sempre proporzionale
+  background(ranR, ranG, ranB); //background che cambia randomicamente ogni volta che si avvia lo sketch
+  smooth();
+  noStroke();
+
+}
+
+void draw(){
+  
+  if(frameCount % 10 ==0){
+    
+    fill(frameCount *2 % 255, frameCount * 4 % 250, frameCount * 8 % 250);
+    pushMatrix();
+    translate(width/2,height/2); //questo sposta le coordinate 0,0 (punto di rotazione) al centro dello sketch, ovvero width/2 e height/2
+    rotate(radians(frameCount *0.5 % 360));
+    rect(0,0,width/2.5,width/30); //questa è la dimensione dei rettangoli, proporzionale alla dimensione totale dello sketch
+    popMatrix();
+    
+  }
+  
+}
             
         </script>
         <canvas></canvas>
